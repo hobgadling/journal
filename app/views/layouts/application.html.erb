@@ -5,11 +5,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'bootstrap.min', media: 'all' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page"><a href="/entries">Home</a></li>
+          <% if(logged_in?) %>
+            <li class="breadcrumb-item active" aria-current="page"><%= @current_user[:username] %></li>
+            <% end %>
+          </ol>
+        </nav>
     <%= yield %>
   </body>
 </html>
